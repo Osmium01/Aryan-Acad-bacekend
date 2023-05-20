@@ -10,7 +10,7 @@ const nodemailer = require("nodemailer");
 const urlrewrite = require("express-urlrewrite");
 
 const app = express();
-const url = "mongodb://127.0.0.1:27017";
+const url = "mongodb+srv://admin:7nefQ3yWuyneyZZK@cluster0.ajguymm.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(url);
 
 app.use(urlrewrite("/onlinePayment", "/onlinefee.html"));
@@ -164,99 +164,6 @@ app.delete("/deleteStudent/:id", async (req, res) => {
   }
 });
 
-// app.post("/payment", async (req, res) => {
-//   try {
-//     let { amount, name, regnum, classSelect, fees, email } = req.body;
-
-//     var instance = new Razorpay({
-//       key_id: "rzp_test_QS5nYws4WQAItA",
-//       key_secret: "l5aowPd0lXdZIFe9QryfjOkI",
-//     });
-
-//     let order = await instance.orders.create({
-//       amount: amount * 100,
-//       currency: "INR",
-//       receipt: "receipt#1",
-//     });
-
-//     await client.connect();
-//     console.log("Connected to MongoDB");
-
-//     const db = client.db("studentdb");
-//     const studentsCollection = db.collection("feesPayment");
-
-//     // Check if the student with the same registration number already exists
-//     const existingStudent = await studentsCollection.findOne({
-//       registration_number: regnum,
-//     });
-//     if (existingStudent) {
-//       return res
-//         .status(400)
-//         .json({
-//           error: "Student with the same registration number already exists",
-//         });
-//     }
-
-//     const paymentData = {
-//       name,
-//       registration_number: regnum,
-//       class: classSelect,
-//       fees: parseFloat(fees),
-//       paymentStatus: order.status === "created" ? "success" : "failed",
-//       date: new Date(),
-//     };
-
-//     const result = await studentsCollection.insertOne(paymentData);
-
-//     console.log("New student added:", result.insertedId);
-
-//     if (order.status === "created") {
-//       const receipt = `Student of Class ${classSelect} with Registration No. ${regnum} has paid their fees.`;
-
-//       // Create a nodemailer transporter using your email service provider details
-//       const transporter = nodemailer.createTransport({
-//         service: "gmail",
-//         auth: {
-//           user: "demotoasting11@gmail.com",
-//           pass: "wfbqkrnxsdynvwna",
-//         },
-//       });
-
-//       // Setup email data
-//       const mailOptions = {
-//         from: "demotoasting11@gmail.com",
-//         to: email,
-//         subject: "Payment Receipt",
-//         text: "Good Morning",
-//       };
-
-//       // Send email
-//       transporter.sendMail(mailOptions, (error, info) => {
-//         if (error) {
-//           console.error("Error sending email:", error);
-//         } else {
-//           console.log("Email sent:", info.response);
-//         }
-//       });
-
-//       // Return the response
-//       res.status(201).json({
-//         success: true,
-//         order,
-//         amount,
-//         receipt,
-//       });
-//     } else {
-//       res.status(500).json({ error: "Payment failed" });
-//     }
-//   } catch (error) {
-//     console.error("Error:", error);
-//     res.status(500).send("Internal Server Error");
-//   } finally {
-//     await client.close();
-//     console.log("Disconnected from MongoDB");
-//   }
-// });
 
 app.post("/payment", async (req, res) => {
   try {
@@ -440,6 +347,8 @@ cron.schedule("0 0 5 * *", async () => {
   }
 });
 
-app.listen(9000, () => {
-  console.log("Server running on port 9000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log("Server running on port 3000");
 });
