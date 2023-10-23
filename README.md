@@ -34,7 +34,7 @@ This is a simple Student Management System web application built using Node.js, 
   - GMAIL_PASS=your_gmail_password
 
 
-5. Start the server:
+4. Start the server:
 
 
 
