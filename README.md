@@ -12,7 +12,6 @@ This is a simple Student Management System web application built using Node.js, 
 - [Database](#database)
 - [Online Fee Payment](#online-fee-payment)
 - [Cron Job](#cron-job)
-- [License](#license)
 
 ## Prerequisites
 - Node.js installed on your system
@@ -28,9 +27,14 @@ This is a simple Student Management System web application built using Node.js, 
 
 
 3. Set up your environment variables. Create a `.env` file in the root of your project and add the following:
+  -MONGODB_URI=your_mongodb_connection_url
+  -RAZORPAY_KEY_ID=your_razorpay_key_id
+  -RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+  -GMAIL_USER=your_gmail_username
+  -GMAIL_PASS=your_gmail_password
 
 
-4. Start the server:
+5. Start the server:
 
 
 
