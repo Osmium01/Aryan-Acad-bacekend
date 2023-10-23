@@ -27,11 +27,11 @@ This is a simple Student Management System web application built using Node.js, 
 
 
 3. Set up your environment variables. Create a `.env` file in the root of your project and add the following:
-  -MONGODB_URI=your_mongodb_connection_url
-  -RAZORPAY_KEY_ID=your_razorpay_key_id
-  -RAZORPAY_KEY_SECRET=your_razorpay_key_secret
-  -GMAIL_USER=your_gmail_username
-  -GMAIL_PASS=your_gmail_password
+  - MONGODB_URI=your_mongodb_connection_url
+  - RAZORPAY_KEY_ID=your_razorpay_key_id
+  - RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+  - GMAIL_USER=your_gmail_username
+  - GMAIL_PASS=your_gmail_password
 
 
 5. Start the server:
